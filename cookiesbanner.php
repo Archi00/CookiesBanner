@@ -1,0 +1,91 @@
+<?php
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
+
+class MyModule extends Module
+{
+    public function __construct()
+    {
+        $this->name = 'cookiesbanner';
+        $this->tab = 'front_office_features';
+        $this->version = '1.0.0';
+        $this->author = 'Archi00';
+        $this->need_instance = 0;
+        $this->ps_versions_compliancy = [
+            'min' => '1.6',
+            'max' => '1.7.99',
+        ];
+        $this->bootstrap = true;
+
+        parent::__construct();
+
+        $this->displayName = $this->l('Cookies Banner');
+        $this->description = $this->l('Simple banner to display cookies banner compliant with GDPR');
+
+        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
+
+        if (!Configuration::get('COOKIES_BANNER')) {
+            $this->warning = $this->l('No name provided');
+        }
+    }
+
+    public function install()
+        {
+        if (Shop::isFeatureActive()) {
+            Shop::setContext(Shop::CONTEXT_ALL);
+        }
+
+        return (
+            parent::install() 
+            && $this->registerHook('leftColumn')
+            && $this->registerHook('actionFrontControllerSetMedia')
+            && Configuration::updateValue('MYMODULE_NAME', 'my friend');
+        ); 
+    }
+
+    public function uninstall()
+    {
+        return (
+            parent::uninstall() 
+            && Configuration::deleteByName('COOKIES_BANNER')
+        );
+    }
+
+    public function hookDisplayLeftColumn($params)
+    {
+        $this->context->smarty->assign([
+            'cookies_banner_name' => Configuration::get('COOKIES_BANNER'),
+            'cookies_banner_link' => $this->context->link->getModuleLink('cookiesbanner', 'display')
+        ]);
+
+        return $this->display(__FILE__, 'cookiesbanner.tpl');
+    }
+
+    public function hookDisplayRightColumn($params)
+    {
+        return $this->hookDisplayLeftColumn($params);
+    }
+
+    public function hookActionFrontControllerSetMedia()
+    {
+        $this->context->controller->registerStylesheet(
+            'cookiesbanner-style',
+            $this->_path.'views/css/cookiesbanner.css',
+            [
+                'media' => 'all',
+                'priority' => 1000,
+            ]
+        );
+
+        $this->context->controller->registerJavascript(
+            'cookiesbanner-javascript',
+            $this->_path.'views/js/cookiesbanner.js',
+            [
+                'position' => 'bottom',
+                'priority' => 1000,
+            ]
+        );
+    }
+
+}
