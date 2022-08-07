@@ -3,7 +3,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-class MyModule extends Module
+class CookiesBanner extends Module
 {
     public function __construct()
     {
@@ -25,7 +25,7 @@ class MyModule extends Module
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
-        if (!Configuration::get('COOKIES_BANNER')) {
+        if (!Configuration::get('COOKIESBANNER_NAME')) {
             $this->warning = $this->l('No name provided');
         }
     }
@@ -40,7 +40,7 @@ class MyModule extends Module
             parent::install() 
             && $this->registerHook('leftColumn')
             && $this->registerHook('actionFrontControllerSetMedia')
-            && Configuration::updateValue('COOKIES_BANNER', 'Cookies Banner')
+            && Configuration::updateValue('COOKIESBANNER_NAME', 'Cookies Banner')
         ); 
     }
 
