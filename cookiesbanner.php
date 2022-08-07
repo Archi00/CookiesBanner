@@ -20,7 +20,7 @@ class MyModule extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->l('Cookies Banner');
+        $this->displayName = $this->l('Cookies banner');
         $this->description = $this->l('Simple banner to display cookies banner compliant with GDPR');
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
