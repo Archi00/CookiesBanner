@@ -10,7 +10,7 @@ class MyModule extends Module
         $this->name = 'cookiesbanner';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
-        $this->author = 'Archi00';
+        $this->author = 'Archi';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
             'min' => '1.6',
@@ -40,7 +40,7 @@ class MyModule extends Module
             parent::install() 
             && $this->registerHook('leftColumn')
             && $this->registerHook('actionFrontControllerSetMedia')
-            && Configuration::updateValue('MYMODULE_NAME', 'Cookies Banner')
+            && Configuration::updateValue('COOKIES_BANNER', 'Cookies Banner')
         ); 
     }
 
