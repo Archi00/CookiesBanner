@@ -40,7 +40,7 @@ class MyModule extends Module
             parent::install() 
             && $this->registerHook('leftColumn')
             && $this->registerHook('actionFrontControllerSetMedia')
-            && Configuration::updateValue('MYMODULE_NAME', 'my friend');
+            && Configuration::updateValue('MYMODULE_NAME', 'Cookies Banner')
         ); 
     }
 
@@ -56,7 +56,8 @@ class MyModule extends Module
     {
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIES_BANNER'),
-            'cookies_banner_link' => $this->context->link->getModuleLink('cookiesbanner', 'display')
+            'cookies_banner_link' => $this->context->link->getModuleLink('cookiesbanner', 'display'),
+            'cookies_banner_message' => $this->l('This is a simple text message')
         ]);
 
         return $this->display(__FILE__, 'cookiesbanner.tpl');
