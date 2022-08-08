@@ -14,7 +14,7 @@ class CookiesBanner extends Module
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
             'min' => '1.6',
-            'max' => '1.7.99',
+            'max' => '8.2.0',
         ];
         $this->bootstrap = true;
 
@@ -31,7 +31,7 @@ class CookiesBanner extends Module
     }
 
     public function install()
-        {
+    {
         if (Shop::isFeatureActive()) {
             Shop::setContext(Shop::CONTEXT_ALL);
         }
@@ -48,14 +48,14 @@ class CookiesBanner extends Module
     {
         return (
             parent::uninstall() 
-            && Configuration::deleteByName('COOKIES_BANNER')
+            && Configuration::deleteByName('COOKIESBANNER_NAME')
         );
     }
 
     public function hookDisplayLeftColumn($params)
     {
         $this->context->smarty->assign([
-            'cookies_banner_name' => Configuration::get('COOKIES_BANNER'),
+            'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
             'cookies_banner_link' => $this->context->link->getModuleLink('cookiesbanner', 'display'),
             'cookies_banner_message' => $this->l('This is a simple text message')
         ]);
