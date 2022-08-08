@@ -1,18 +1,13 @@
 div#cookiesbanner_block_home p {
-  font-size: 150%;
-  font-style: italic;
-}
-
-div#cookiesbanner_block_home h4 {
-  text-align: center;
+  color: black;
 }
 
 div#cookiesbanner_block_home {
   position: fixed;
-  top: 85vh;
+  top: 93vh;
   min-width: 100vw;
   background-color: grey;
-  min-height: 15vh;
+  max-height: 7vh;
   z-index: 9999;
-  padding: 0.5em;
+  padding: .5em 2em;
 }

@@ -1,15 +1,15 @@
 <!-- this file should be at /views/templates/hook/cookiesbanner.tpl -->
 <!-- Block cookiesbanner -->
 <div id="cookiesbanner_block_home" class="block">
-  <h4>{l s='Welcome!' mod='cookiesbanner'}</h4>
   <div class="block_content">
-    <p>Hello,
+    <p>
            {if isset($cookies_banner_name) && $cookies_banner_name}
-               {$cookies_banner_name}
+              {$cookies_banner_message}
+              {$cookies_banner_more_info}
+              <button id='btn'>{$cookies_banner_button}</button>
            {else}
-               World
+              This site uses cookies!
            {/if}
-           !
     </p>
   </div>
 </div>

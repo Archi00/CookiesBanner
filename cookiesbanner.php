@@ -56,8 +56,9 @@ class CookiesBanner extends Module
     {
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
-            'cookies_banner_link' => $this->context->link->getModuleLink('cookiesbanner', 'display'),
-            'cookies_banner_message' => $this->l('This is a simple text message')
+            'cookies_banner_message' => $this->l('This site uses cookies to give you the best, most relevant experience. Using this website means you\'re OK with this'),
+            'cookies_banner_more_info' => $this->l('For more information about cookies please follow this'),
+            'cookies_banner_button' => $this->l('Accept')
         ]);
 
         return $this->display(__FILE__, 'cookiesbanner.tpl');
