@@ -2,3 +2,17 @@ div#cookiesbanner_block_home p {
   font-size: 150%;
   font-style: italic;
 }
+
+div#cookiesbanner_block_home h4 {
+  text-align: center;
+}
+
+div#cookiesbanner_block_home {
+  position: fixed;
+  top: 85vh;
+  min-width: 100vw;
+  background-color: grey;
+  min-height: 15vh;
+  z-index: 9999;
+  padding: 0.5em;
+}

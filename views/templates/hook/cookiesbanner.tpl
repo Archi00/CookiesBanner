@@ -11,9 +11,6 @@
            {/if}
            !
     </p>
-    <ul>
-      <li><a href="{$cookies_banner_link}" title="Click this link">Click me!</a></li>
-    </ul>
   </div>
 </div>
 <!-- /Block cookiesbanner -->

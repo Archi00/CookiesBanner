@@ -10,7 +10,7 @@ class CookiesBanner extends Module
         $this->name = 'cookiesbanner';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
-        $this->author = 'Archi';
+        $this->author = 'Archi00';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
             'min' => '1.6',
@@ -38,8 +38,8 @@ class CookiesBanner extends Module
 
         return (
             parent::install() 
-            && $this->registerHook('leftColumn')
             && $this->registerHook('actionFrontControllerSetMedia')
+            && $this->registerHook('displayBeforeBodyClosingTag')
             && Configuration::updateValue('COOKIESBANNER_NAME', 'Cookies Banner')
         ); 
     }
@@ -51,8 +51,8 @@ class CookiesBanner extends Module
             && Configuration::deleteByName('COOKIESBANNER_NAME')
         );
     }
-
-    public function hookDisplayLeftColumn($params)
+    
+    public function hookDisplayBeforeBodyClosingTag($params)
     {
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
@@ -63,30 +63,10 @@ class CookiesBanner extends Module
         return $this->display(__FILE__, 'cookiesbanner.tpl');
     }
 
-    public function hookDisplayRightColumn($params)
-    {
-        return $this->hookDisplayLeftColumn($params);
-    }
-
     public function hookActionFrontControllerSetMedia()
     {
-        $this->context->controller->registerStylesheet(
-            'cookiesbanner-style',
-            $this->_path.'views/css/cookiesbanner.css',
-            [
-                'media' => 'all',
-                'priority' => 1000,
-            ]
-        );
+        $this->context->controller->addCss($this->_path.'views/css/cookiesbanner.css');
 
-        $this->context->controller->registerJavascript(
-            'cookiesbanner-javascript',
-            $this->_path.'views/js/cookiesbanner.js',
-            [
-                'position' => 'bottom',
-                'priority' => 1000,
-            ]
-        );
     }
 
 }
