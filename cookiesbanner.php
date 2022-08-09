@@ -39,7 +39,7 @@ class CookiesBanner extends Module
         return (
             parent::install() 
             && $this->registerHook('actionFrontControllerSetMedia')
-            && $this->registerHook('displayBeforeBodyClosingTag')
+            && $this->registerHook('displayHeader')
             && Configuration::updateValue('COOKIESBANNER_NAME', 'Cookies Banner')
         ); 
     }
@@ -52,12 +52,12 @@ class CookiesBanner extends Module
         );
     }
     
-    public function hookDisplayBeforeBodyClosingTag($params)
+    public function hookDisplayHeader()
     {
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
-            'cookies_banner_message' => $this->l('This site uses cookies to give you the best, most relevant experience. Using this website means you\'re OK with this'),
-            'cookies_banner_more_info' => $this->l('For more information about cookies please follow this'),
+            'cookies_banner_message_main' => $this->l('This site uses cookies to give you the best, most relevant experience.'),
+            'cookies_banner_message_sub' => $this-> l('Using this website means you\'re OK with this'),
             'cookies_banner_button' => $this->l('Accept')
         ]);
 
@@ -67,7 +67,7 @@ class CookiesBanner extends Module
     public function hookActionFrontControllerSetMedia()
     {
         $this->context->controller->addCss($this->_path.'views/css/cookiesbanner.css');
-
+        $this->context->controller->addJS($this->_path.'views/js/cookiesbanner.js'); 
     }
 
 }

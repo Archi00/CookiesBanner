@@ -1,13 +1,48 @@
 div#cookiesbanner_block_home p {
   color: black;
+  max-width: 70%;
+  padding-top:1em;
+  margin-bottom:1.25em;
+  text-align: center;
+  font-weight: 600;
 }
 
 div#cookiesbanner_block_home {
   position: fixed;
-  top: 93vh;
-  min-width: 100vw;
-  background-color: grey;
-  max-height: 7vh;
+  top: 0;
+  min-width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: rgba(126, 122, 128, 0.9);
   z-index: 9999;
-  padding: .5em 2em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+div#cookiesbanner_block_home .block_container_flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1em;
+  max-height: 3vh;
+}
+
+div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn{
+  margin-bottom: .625em;
+  position: absolute;
+  right: 2em;
+  top: .7em;
+  border-radius: 5px;
+  background-color: rgba(170, 186, 167, 1);
+  border: .1em;
+  padding:.5em 1em;
+  font-size: small;
+  transition: ease-in-out 50ms;
+}
+
+div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hover {
+  cursor: pointer;
+  color: rgba(226, 234, 224, 1);
+  background-color: rgba(91, 164, 79, 1);
+  border: solid .5px black;
+  font-weight: 600;
 }

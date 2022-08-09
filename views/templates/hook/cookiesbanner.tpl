@@ -2,15 +2,17 @@
 <!-- Block cookiesbanner -->
 <div id="cookiesbanner_block_home" class="block">
   <div class="block_content">
-    <p>
-           {if isset($cookies_banner_name) && $cookies_banner_name}
-              {$cookies_banner_message}
-              {$cookies_banner_more_info}
-              <button id='btn'>{$cookies_banner_button}</button>
-           {else}
-              This site uses cookies!
-           {/if}
-    </p>
+    <div class="block_container_flex">
+      <p>
+            {if isset($cookies_banner_name) && $cookies_banner_name}
+                {$cookies_banner_message_main}
+                {$cookies_banner_message_sub}
+            {else}
+                This site uses cookies!
+            {/if}
+      </p>
+      <button id="cookiesbanner_accept_btn">{$cookies_banner_button}</button>
+    </div>
   </div>
 </div>
 <!-- /Block cookiesbanner -->
