@@ -54,11 +54,13 @@ class CookiesBanner extends Module
     
     public function hookDisplayHeader()
     {
+        $this->$myCache = $_GET["gs_cookiesAccepted"];
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
             'cookies_banner_message_main' => $this->l('This site uses cookies to give you the best, most relevant experience.'),
             'cookies_banner_message_sub' => $this-> l('Using this website means you\'re OK with this'),
-            'cookies_banner_button' => $this->l('Accept')
+            'cookies_banner_button' => $this->l('Accept'),
+            'cookies_banner_cookies_accepted' => $this->$myCache
         ]);
 
         return $this->display(__FILE__, 'cookiesbanner.tpl');
