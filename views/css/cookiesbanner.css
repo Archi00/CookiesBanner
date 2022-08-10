@@ -38,6 +38,7 @@ div#cookiesbanner_block_home .block_container_flex {
   padding:.5em 1em;
   font-size: small;
   transition: ease-in-out 50ms;
+  margin-top: .625em;
 }
 
 div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hover {
@@ -46,6 +47,12 @@ div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hov
   background-color: rgba(91, 164, 79, 1);
   border: solid .5px black;
   font-weight: 600;
+}
+
+@media ((max-width:1499px) and (min-width: 649)) {
+  div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn {
+    margin-top:.625em;
+  }
 }
 
 @media (max-width: 1499px) {
@@ -72,42 +79,26 @@ div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hov
   div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn {
     max-width: auto;
     font-size: .5em;
-    top: 2em;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    margin: 0;
+    bottom: 0;
+    min-width: 100vw;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-weight: 600;
+    padding-bottom: .5em;
+    margin-top: 0;
   }
   div#cookiesbanner_block_home p {
     font-size: .8em;
-    padding-top: 2em;
+    padding-top: .8em;
   }
 
-  @media (max-width: 549px) {
-    #cookiesbanner_accept_btn {
-      font-weight: 600;
-    }
-
-    div#cookiesbanner_block_home .block_container_flex {
-      max-height: 15vh;
-    }
-  } 
-
-  @media (max-width: 349px) {
-    div#cookiesbanner_block_home div.block_content button#cookiesbanner_accept_btn {
-      position: absolute;
-      top: 80%;
-      left: 0;
-      margin: 0;
-      bottom: 0;
-      min-width: 100vw;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
+  @media (max-width: 399px) {
     #cookiesbanner_block_home {
-      min-height: 25vh;
-    }
-
-    div#cookiesbanner_block_home p {
-      padding-top: 2em;
-      min-width: 100%;
+      min-height: 14vh;
     }
   } 
 }
