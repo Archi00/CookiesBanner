@@ -9,13 +9,14 @@ div#cookiesbanner_block_home p {
 
 div#cookiesbanner_block_home {
   position: fixed;
-  top: 0;
+  bottom: 0;
   min-width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: rgba(126, 122, 128, 0.9);
   z-index: 9999;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: all ease-in-out 50ms;
 }
 
 div#cookiesbanner_block_home .block_container_flex {
@@ -26,7 +27,7 @@ div#cookiesbanner_block_home .block_container_flex {
   max-height: 3vh;
 }
 
-div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn{
+#cookiesbanner_accept_btn{
   margin-bottom: .625em;
   position: absolute;
   right: 2em;
@@ -45,4 +46,68 @@ div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hov
   background-color: rgba(91, 164, 79, 1);
   border: solid .5px black;
   font-weight: 600;
+}
+
+@media (max-width: 1499px) {
+  div#cookiesbanner_block_home .block_container_flex {
+    max-height: 5vh;
+  }
+  
+  div#cookiesbanner_block_home p {
+    font-size: .8em;
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+    font-weight: 400;
+  }
+
+  div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn {
+    top: 1em;
+  }
+}
+
+@media (max-width: 649px) {
+  div#cookiesbanner_block_home .block_container_flex {
+    max-height: 8vh;
+  }
+  div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn {
+    max-width: auto;
+    font-size: .5em;
+    top: 2em;
+  }
+  div#cookiesbanner_block_home p {
+    font-size: .8em;
+    padding-top: 2em;
+  }
+
+  @media (max-width: 549px) {
+    #cookiesbanner_accept_btn {
+      font-weight: 600;
+    }
+
+    div#cookiesbanner_block_home .block_container_flex {
+      max-height: 15vh;
+    }
+  } 
+
+  @media (max-width: 349px) {
+    div#cookiesbanner_block_home div.block_content button#cookiesbanner_accept_btn {
+      position: absolute;
+      top: 80%;
+      left: 0;
+      margin: 0;
+      bottom: 0;
+      min-width: 100vw;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    #cookiesbanner_block_home {
+      min-height: 25vh;
+    }
+
+    div#cookiesbanner_block_home p {
+      padding-top: 2em;
+      min-width: 100%;
+    }
+  } 
 }

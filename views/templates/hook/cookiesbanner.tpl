@@ -1,4 +1,4 @@
-{if empty($cookies_banner_cookies_accepted)}
+{if !$cookies_banner_cookies_accepted}
   <!-- this file should be at /views/templates/hook/cookiesbanner.tpl -->
   <!-- Block cookiesbanner -->
   <div id="cookiesbanner_block_home" class="block">

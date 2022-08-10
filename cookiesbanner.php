@@ -21,7 +21,7 @@ class CookiesBanner extends Module
         parent::__construct();
 
         $this->displayName = $this->l('Cookies banner');
-        $this->description = $this->l('Simple banner to display cookies banner compliant with GDPR');
+        $this->description = $this->l('Simple notice banner to tell customers that this site uses cookies');
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
@@ -52,15 +52,20 @@ class CookiesBanner extends Module
         );
     }
     
+    public function isUsingNewTranslationSystem()
+    {
+        return true;
+    }
+    
     public function hookDisplayHeader()
     {
-        $this->$myCache = $_GET["gs_cookiesAccepted"];
+        $cookies_banner_cookies_accepted = isset($_COOKIE["cookies_banner_accepted"]);
         $this->context->smarty->assign([
             'cookies_banner_name' => Configuration::get('COOKIESBANNER_NAME'),
-            'cookies_banner_message_main' => $this->l('This site uses cookies to give you the best, most relevant experience.'),
-            'cookies_banner_message_sub' => $this-> l('Using this website means you\'re OK with this'),
-            'cookies_banner_button' => $this->l('Accept'),
-            'cookies_banner_cookies_accepted' => $this->$myCache
+            'cookies_banner_message_main' => $this->trans('This site uses cookies to give you the best, most relevant experience.', [], 'Modules.Cookiesbanner.Mainbody'),
+            'cookies_banner_message_sub' => $this-> trans('Using this website means you\'re OK with this', [], 'Modules.Cookiesbanner.Subbody'),
+            'cookies_banner_button' => $this->trans('Accept', [], 'Modules.Cookiesbanner.Button'),
+            'cookies_banner_cookies_accepted' => $cookies_banner_cookies_accepted
         ]);
 
         return $this->display(__FILE__, 'cookiesbanner.tpl');
@@ -68,7 +73,7 @@ class CookiesBanner extends Module
 
     public function hookActionFrontControllerSetMedia()
     {
-        $this->context->controller->addCss($this->_path.'views/css/cookiesbanner.css');
+        $this->context->controller->addCSS($this->_path.'views/css/cookiesbanner.css');
         $this->context->controller->addJS($this->_path.'views/js/cookiesbanner.js'); 
     }
 
