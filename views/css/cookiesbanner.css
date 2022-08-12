@@ -24,7 +24,6 @@ div#cookiesbanner_block_home .block_container_flex {
   justify-content: space-around;
   align-items: center;
   margin: 1em;
-  max-height: 3vh;
 }
 
 #cookiesbanner_accept_btn{
@@ -73,9 +72,16 @@ div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hov
 }
 
 @media (max-width: 649px) {
-  div#cookiesbanner_block_home .block_container_flex {
-    max-height: 8vh;
+  div#cookiesbanner_block_home {
+    min-height: 18vh;
+    display: flex;
+    align-items: flex-end;
   }
+  div#cookiesbanner_block_home div.block_content div.block_container_flex {
+    margin: 0 0 1em 0;
+    max-height: 15vh;
+  }
+
   div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn {
     max-width: auto;
     font-size: .5em;
@@ -89,16 +95,12 @@ div#cookiesbanner_block_home .block_container_flex #cookiesbanner_accept_btn:hov
     border-bottom-right-radius: 0;
     font-weight: 600;
     padding-bottom: .5em;
-    margin-top: 0;
+
   }
+
   div#cookiesbanner_block_home p {
     font-size: .8em;
     padding-top: .8em;
   }
 
-  @media (max-width: 399px) {
-    #cookiesbanner_block_home {
-      min-height: 14vh;
-    }
-  } 
 }
