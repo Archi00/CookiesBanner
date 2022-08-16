@@ -1,11 +1,13 @@
 const block = document.querySelector("#cookiesbanner_block_home")
 const btn = document.querySelector("#cookiesbanner_accept_btn")
 
-btn.addEventListener("click", () => {
-  setCookie("cookies_banner_accepted", true)
-  console.log("Cookies Accepted")
-  block.style.display = "none"
-})
+if (btn && block) {
+  btn.addEventListener("click", () => {
+    setCookie("cookies_banner_accepted", true)
+    console.log("Cookies Accepted")
+    block.style.display = "none"
+  })
+}
 
 function setCookie(name,value) {
     const date = new Date();
